@@ -273,3 +273,15 @@ variable "efs_mount_target" {
   description = "Directory path in efs to mount to"
   default     = null
 }
+
+variable "github_user" {
+  type        = string
+  description = "Github user"
+  default     = null
+}
+
+variable "github_token" {
+  type        = string
+  description = "Github token"
+  default     = null
+}

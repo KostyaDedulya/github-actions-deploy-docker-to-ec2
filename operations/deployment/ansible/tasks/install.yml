@@ -23,6 +23,13 @@
 - name: Update apt and install docker-ce
   apt: update_cache=yes name=docker-ce state=latest
 
+- name: Log into private registry and force re-authorization
+  docker_login:
+    registry: ghcr.io
+    username: "{{ github_user }}"
+    password: "{{ github_token }}"
+    reauthorize: yes
+
 - name: Install Docker Module for Python
   pip:
     name:
