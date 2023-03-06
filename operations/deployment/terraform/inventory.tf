@@ -16,6 +16,8 @@ resource "local_file" "ansible_inventory" {
     application_mount_target = var.application_mount_target
     efs_mount_target         = var.efs_mount_target != null ? var.efs_mount_target : ""
     data_mount_target        = var.data_mount_target
+    github_user              = var.github_user
+    github_token             = var.github_token
   })
   filename = format("%s/%s", abspath(path.root), "inventory.yaml")
 }

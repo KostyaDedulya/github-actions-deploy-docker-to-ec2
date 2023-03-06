@@ -29,3 +29,10 @@
       - docker
       - docker-compose
 
+- name: Log into private registry and force re-authorization
+  docker_login:
+    registry: ghcr.io
+    username: "{{ github_user }}"
+    password: "{{ github_token }}"
+    reauthorize: yes
+

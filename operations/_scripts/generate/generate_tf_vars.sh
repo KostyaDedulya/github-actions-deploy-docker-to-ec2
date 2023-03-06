@@ -148,6 +148,8 @@ additional_tags=$(generate_var additional_tags $ADDITIONAL_TAGS)
 application_mount_target=$(generate_var application_mount_target $APPLICATION_MOUNT_TARGET)
 efs_mount_target=$(generate_var efs_mount_target $EFS_MOUNT_TARGET)
 data_mount_target=$(generate_var data_mount_target $DATA_MOUNT_TARGET)
+github_user=$(generate_var github_user $GITHUB_USER)
+github_token=$(generate_var github_token $GITHUB_TOKEN)
 
 
 # -------------------------------------------------- #
@@ -222,5 +224,7 @@ $additional_tags
 $application_mount_target
 $efs_mount_target
 $data_mount_target
+$github_user
+$github_token
 
 " > "${GITHUB_ACTION_PATH}/operations/deployment/terraform/terraform.tfvars"

@@ -164,6 +164,10 @@ inputs:
     description: "Directory path within docker env to mount directory to, default is `/data`"
   efs_mount_target:
     description: "Directory path in efs to mount directory to, default is `/`"
+  github_user:
+    description: "Github user"
+  github_token:
+    description: "Github token"
 
 outputs:
   vm_url:
@@ -232,6 +236,8 @@ runs:
         APPLICATION_MOUNT_TARGET: ${{ inputs.application_mount_target }}
         EFS_MOUNT_TARGET: ${{ inputs.efs_mount_target }}
         DATA_MOUNT_TARGET: ${{ inputs.data_mount_target }}
+        GITHUB_USER: ${{ inputs.github_user }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
 
       run: |
         echo "running operations/_scripts/deploy/deploy.sh"
