@@ -17,6 +17,7 @@
   copy:
     src: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}/config/"
     dest: "{{ app_install_root }}/{{ app_repo_name }}/"
+    remote_src: true
 
 - name: Install the aws ca bundle
   get_url:
