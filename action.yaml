@@ -52,6 +52,16 @@ inputs:
     description: 'Secret name to pull env variables from AWS Secret Manager'
     required: false
     default: ''
+  gql_env:
+    description: 'envs for gql-gateway'
+  auth_env:
+    description: 'envs for auth-subgraph'
+  wallet_env:
+    description: 'envs for wallet-subgraph'
+  chat_env:
+    description: 'envs for chat-services'
+  db_env:
+    description: 'envs for db'
   
   # Application
   app_directory:
@@ -238,6 +248,11 @@ runs:
         DATA_MOUNT_TARGET: ${{ inputs.data_mount_target }}
         GITHUB_USER: ${{ inputs.github_user }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
+        GQL_ENV: ${{inputs.gql_env}}
+        AUTH_ENV: ${{inputs.auth_env}}
+        WALLET_ENV: ${{inputs.wallet_env}}
+        CHAT_ENV: ${{inputs.chat_env}}
+        DB_ENV: ${{inputs.db_env}}
 
       run: |
         echo "running operations/_scripts/deploy/deploy.sh"
