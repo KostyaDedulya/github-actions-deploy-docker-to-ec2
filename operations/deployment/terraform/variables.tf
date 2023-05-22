@@ -53,15 +53,20 @@ variable "ec2_instance_public_ip" {
   default     = "true"
   description = "Attach public IP to the EC2 instance"
 }
+variable "ec2_volume_size" {
+  type        = string
+  default     = "8"
+  description = "Size (in GB) of the VM's storage drive"
+}
 
 variable "security_group_name" {
   type        = string
-  default     = "SG for deployment"
+  default     = ""
   description = "Name of the security group to use"
 }
 variable "aws_security_group_name_pg" {
   type        = string
-  default     = "SG for postgres deployment"
+  default     = ""
   description = "Name of the security group to use for postgres"
 }
 variable "ec2_iam_instance_profile" {
@@ -173,7 +178,24 @@ variable "aws_postgres_database_port" {
   default     = "5432"
   description = "database port"
 }
+ 
+variable "aws_postgres_database_group_family" {
+  type        = string
+  default     = "aurora-postgresql11"
+  description = "postgres group family"
+}
 
+variable "aws_postgres_database_protection" {
+  type        = bool
+  default     = false
+  description = "Protects the database from deletion."
+}
+
+variable "aws_postgres_database_final_snapshot" {
+  type        = string
+  default     = ""
+  description = "Generates a snapshot of the database before deletion."
+}
 
 ## -- EFS -- ##
 variable "aws_create_efs" {

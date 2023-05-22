@@ -82,6 +82,11 @@ inputs:
   ec2_instance_type: 
     description: 'The AWS Instance type'
     required: false
+  ec2_volume_size: 
+    description: 'The size of the volume (in GB) on the AWS Instance'
+    required: false
+    default: "8"
+
   
   # EFS
   aws_create_efs:
@@ -165,7 +170,16 @@ inputs:
   aws_postgres_database_port:
     description: 'Postgres database port'
     required: false
-  
+  aws_postgres_database_group_family:
+    description: 'Postgres database group family'
+    required: false 
+  aws_postgres_database_protection:
+    description: 'Protects the database from deletion.'
+    required: false
+  aws_postgres_database_final_snapshot:
+    description: 'Generates a snapshot of the database before deletion.'
+    required: false
+
   # Ansible
   application_mount_target:
     description: "Directory path in application env to mount directory, default is `data`"
@@ -214,6 +228,7 @@ runs:
         LB_HEALTHCHECK: ${{ inputs.lb_healthcheck }}
         EC2_INSTANCE_PROFILE: ${{ inputs.ec2_instance_profile }}
         EC2_INSTANCE_TYPE: ${{ inputs.ec2_instance_type }}
+        EC2_VOLUME_SIZE: ${{ inputs.ec2_volume_size }}
         STACK_DESTROY: ${{ inputs.stack_destroy }}
         AWS_RESOURCE_IDENTIFIER: ${{ inputs.aws_resource_identifier }}
         DOMAIN_NAME: ${{ inputs.domain_name }}
@@ -230,10 +245,13 @@ runs:
         AWS_ENABLE_POSTGRES: ${{ inputs.aws_enable_postgres }}
         AWS_POSTGRES_ENGINE:  ${{ inputs.aws_postgres_engine }}
         AWS_POSTGRES_ENGINE_VERSION:  ${{ inputs.aws_postgres_engine_version }}
+        AWS_POSTGRES_DATABASE_GROUP_FAMILY: ${{ inputs.aws_postgres_database_group_family }}
         AWS_POSTGRES_INSTANCE_CLASS: ${{ inputs.aws_postgres_instance_class }}
         AWS_POSTGRES_SUBNETS: ${{ inputs.aws_postgres_subnets }}
         AWS_POSTGRES_DATABASE_NAME: ${{ inputs.aws_postgres_database_name }}
         AWS_POSTGRES_DATABASE_PORT: ${{ inputs.aws_postgres_database_port}}
+        AWS_POSTGRES_DATABASE_PROTECTION: ${{ inputs.aws_postgres_database_protection }}
+        AWS_POSTGRES_DATABASE_FINAL_SNAPSHOT: ${{ inputs.aws_postgres_database_final_snapshot }}
         AWS_CREATE_EFS: ${{ inputs.aws_create_efs }}
         AWS_CREATE_HA_EFS: ${{ inputs.aws_create_ha_efs }}
         AWS_CREATE_EFS_REPLICA: ${{ inputs.aws_create_efs_replica }}

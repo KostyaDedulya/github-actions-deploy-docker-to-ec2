@@ -11,7 +11,7 @@ The action will copy this repo to the VM and then run `docker-compose up`.
 ## Need help or have questions?
 This project is supported by [Bitovi, a DevOps Consultancy](https://www.bitovi.com/devops-consulting) and a proud supporter of Open Source software.
 
-You can **get help or ask questions** on [Discord channel](https://discord.gg/J7ejFsZnJ4)! Come hangout with us!
+You can **get help or ask questions** on our [Discord channel](https://discord.gg/J7ejFsZnJ4)! Come hang out with us!
 
 Or, you can hire us for training, consulting, or development. [Set up a free consultation](https://www.bitovi.com/devops-consulting).
 
@@ -159,6 +159,7 @@ The following inputs can be used as `step.with` keys
 | `aws_ami_id` | String | AWS AMI ID. Will default to latest Ubuntu 22.04 server image (HVM). Accepts `ami-###` values. |
 | `ec2_instance_profile` | String | The AWS IAM instance profile to use for the EC2 instance. Default is `${GITHUB_ORG_NAME}-${GITHUB_REPO_NAME}-${GITHUB_BRANCH_NAME}`|
 | `ec2_instance_type` | String | The AWS IAM instance type to use. Default is `t2.small`. See [this list](https://aws.amazon.com/ec2/instance-types/) for reference. |
+| `ec2_volume_size` | Integer | The size of the volume (in GB) on the AWS Instance. | 
 | `create_keypair_sm_entry` | Boolean | Generates and manage a secret manager entry that contains the public and private keys created for the ec2 instance. |
 <hr/>
 <br/>
@@ -191,6 +192,9 @@ The following inputs can be used as `step.with` keys
 | `aws_postgres_subnets` | String | Specify which subnets to use as a list of strings.  Example: `i-1234,i-5678,i-9101`. |
 | `aws_postgres_database_name` | String | Specify a database name. Will be created if it does not exist. Default is `root`. |
 | `aws_postgres_database_port` | String | Specify a listening port for the database. Default is `5432`.|
+| `aws_postgres_database_group_family` | String | Specify aws postgres group family. Default is `aurora-postgresql11`. See [this](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/rds/create-db-parameter-group.html).|
+| `aws_postgres_database_protection` | Boolean | Protects the database from deletion. Default is `false`.|
+| `aws_postgres_database_final_snapshot` | Boolean | Creates a snapshot before deletion. If a string is passed, it will be used as snapsthot name. Defaults to `false`.|
 <hr/>
 <br/>
 
