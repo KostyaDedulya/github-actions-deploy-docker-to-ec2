@@ -11,7 +11,7 @@
 - name: find config files
   find:
     paths: "~/"
-    patterns: "config*"
+    patterns: "production.env"
     use_regex: true
     recurse: true
   register: out
