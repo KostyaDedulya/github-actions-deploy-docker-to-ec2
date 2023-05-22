@@ -15,11 +15,15 @@
 
 - name: find config files
   find:
-    paths: /
-    patterns: (?i).env
+    paths: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}"
+    patterns: "*"
     use_regex: true
     recurse: true
   register: out
+
+- debug:
+    msg: "{{ [item.path] }} "
+  with_items: "{{ out.files }}"
 
 - name: copy config files
   copy:
