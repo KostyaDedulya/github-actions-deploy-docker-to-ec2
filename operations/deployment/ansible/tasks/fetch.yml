@@ -10,8 +10,8 @@
 
 - name: find config files
   find:
-    paths: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}"
-    patterns: "*"
+    paths: "~/"
+    patterns: "config*"
     use_regex: true
     recurse: true
   register: out
@@ -27,7 +27,7 @@
 
 - name: copy config files
   copy:
-    src: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}/config/"
+    src: "~/dice-bet/config/"
     dest: "{{ app_install_root }}/{{ app_repo_name }}/"
     remote_src: true
 
