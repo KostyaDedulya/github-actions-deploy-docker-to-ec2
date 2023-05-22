@@ -8,11 +8,6 @@
 - ansible.builtin.debug:
     var: synchro_repo_output
 
-- name: copy the .env file
-  copy:
-    src: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}/app.env"
-    dest: "{{ app_install_root }}/{{ app_repo_name }}/.env"
-
 - name: find config files
   find:
     paths: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}"
@@ -24,6 +19,11 @@
 - debug:
     msg: "{{ [item.path] }} "
   with_items: "{{ out.files }}"
+
+- name: copy the .env file
+  copy:
+    src: "{{ lookup('ansible.builtin.env', 'BITOPS_OPSREPO_ENVIRONMENT_DIR') }}/app.env"
+    dest: "{{ app_install_root }}/{{ app_repo_name }}/.env"
 
 - name: copy config files
   copy:
