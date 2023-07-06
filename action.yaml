@@ -62,6 +62,8 @@ inputs:
     description: 'envs for chat-services'
   db_env:
     description: 'envs for db'
+  sendgrid_env:
+    description: 'envs for sendgrid'
   
   # Application
   app_directory:
@@ -271,6 +273,7 @@ runs:
         WALLET_ENV: ${{inputs.wallet_env}}
         CHAT_ENV: ${{inputs.chat_env}}
         DB_ENV: ${{inputs.db_env}}
+        SENDGRID_ENV: ${{inputs.sendgrid_env}}
 
       run: |
         echo "running operations/_scripts/deploy/deploy.sh"
