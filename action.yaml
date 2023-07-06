@@ -53,7 +53,7 @@ inputs:
     required: false
     default: ''
   gql_env:
-    description: 'envs for gql-gateway'
+    description: 'envs for gateway'
   auth_env:
     description: 'envs for auth-subgraph'
   wallet_env:
