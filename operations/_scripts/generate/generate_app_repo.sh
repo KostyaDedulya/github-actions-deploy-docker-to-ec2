@@ -15,6 +15,7 @@ mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_
 mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/chat-service"
 mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/db"
 mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/sendgrid-service"
+mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/statistics-service"
 mkdir -p "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/games-subgraph"
 
 echo "$GQL_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/gateway/production.env"
@@ -23,6 +24,7 @@ echo "$WALLET_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${
 echo "$CHAT_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/chat-service/production.env"
 echo "$DB_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/db/production.env"
 echo "$SENDGRID_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/sendgrid-service/production.env"
+echo "$STAT_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/statistics-service/production.env"
 echo "$GAMES_ENV" > "${GITHUB_ACTION_PATH}/operations/deployment/ansible/app/${GITHUB_REPO_NAME}/config/env/games-subgraph/production.env"
 
 TARGET_PATH="$GITHUB_WORKSPACE"
