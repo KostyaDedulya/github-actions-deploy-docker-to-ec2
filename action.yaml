@@ -66,8 +66,8 @@ inputs:
     description: 'envs for sendgrid'
   games_env:
     description: 'envs for games'
-  stat_env:
-    description: 'envs for statistics'
+  blog_env:
+    description: 'envs for blog'
   
   # Application
   app_directory:
@@ -279,7 +279,7 @@ runs:
         DB_ENV: ${{inputs.db_env}}
         SENDGRID_ENV: ${{inputs.sendgrid_env}}
         GAMES_ENV: ${{inputs.games_env}}
-        STAT_ENC: ${{inputs.stat_env}}
+        BLOG_ENV: ${{inputs.blog_env}}
 
       run: |
         echo "running operations/_scripts/deploy/deploy.sh"
